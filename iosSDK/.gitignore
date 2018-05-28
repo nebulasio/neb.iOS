@@ -1,0 +1,37 @@
+# Xcode
+.DS_Store
+*.swp
+.idea
+*.xcworkspace
+*/Build/*
+*/Index/*
+Build
+Index
+Index/*
+Build/*
+*/build_info
+*/products/*
+*/build/*
+build
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+!default.xcworkspace
+*/project.xcworkspace/xcshareddata/*
+xcuserdata
+profile
+*.moved-aside
+DerivedData
+.idea/
+*.hmap
+PushConfig.plist
+#CocoaPods
+Pods
+
+# remove trailing space
+remove_trailing_space.sh
