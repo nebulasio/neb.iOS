@@ -15,6 +15,16 @@
 + (void)debug:(BOOL)debug;
 
 /**
+ * Check if NasNano is installed.
+ **/
++ (BOOL)nasNanoInstalled;
+
+/**
+ * Go to appstore for NasNano.
+ **/
++ (void)goToNasNanoAppStore;
+
+/**
  * Way to generate serialNumber.
  **/
 + (NSString *)randomCodeWithLength:(NSInteger)length;

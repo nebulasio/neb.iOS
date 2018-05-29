@@ -31,6 +31,14 @@ static NSString *kNASCheckUrl = NAS_CHECK_URL;
     }
 }
 
++ (BOOL)nasNanoInstalled {
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:NAS_NANO_SCHEMA_URL]];
+}
+
++ (void)goToNasNanoAppStore {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/cn/app/id1281191905?mt=8"]];
+}
+
 + (NSString *)randomCodeWithLength:(NSInteger)length {
     static NSString *charSet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     NSMutableString *string = [NSMutableString string];

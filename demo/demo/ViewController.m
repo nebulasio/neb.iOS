@@ -37,6 +37,7 @@
                                        andDesc:@"desc"];
     if (error) {
         NSLog(@"%@", error.userInfo[@"msg"]);
+        [NASSmartContracts goToNasNanoAppStore];
     }
 }
 
@@ -51,6 +52,7 @@
                                                andDesc:@"desc2"];
     if (error) {
         NSLog(@"%@", error.userInfo[@"msg"]);
+        [NASSmartContracts goToNasNanoAppStore];
     }
 }
 
@@ -65,5 +67,8 @@
                              }];
 }
 
+- (IBAction)goAppStore:(id)sender {
+    [NASSmartContracts goToNasNanoAppStore];
+}
 
 @end

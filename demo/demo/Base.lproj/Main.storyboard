@@ -46,13 +46,23 @@
                                     <action selector="check:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kTu-5D-ORG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDH-2T-B7L">
+                                <rect key="frame" x="87" y="405" width="200" height="30"/>
+                                <state key="normal" title="Go to appStore"/>
+                                <connections>
+                                    <action selector="goAppStore:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Joi-Te-0jf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="W6b-kK-rnx" firstAttribute="leading" secondItem="yQ5-Ko-MSP" secondAttribute="leading" id="2y9-me-cQn"/>
+                            <constraint firstItem="mDH-2T-B7L" firstAttribute="leading" secondItem="W6b-kK-rnx" secondAttribute="leading" id="Axh-UZ-amM"/>
                             <constraint firstItem="GKb-up-OBJ" firstAttribute="trailing" secondItem="yQ5-Ko-MSP" secondAttribute="trailing" id="BCW-EE-2Kx"/>
                             <constraint firstItem="W6b-kK-rnx" firstAttribute="top" secondItem="GKb-up-OBJ" secondAttribute="bottom" constant="63.5" id="C9j-9D-xTk"/>
                             <constraint firstItem="W6b-kK-rnx" firstAttribute="trailing" secondItem="yQ5-Ko-MSP" secondAttribute="trailing" id="IG6-fU-5VZ"/>
+                            <constraint firstItem="mDH-2T-B7L" firstAttribute="top" secondItem="W6b-kK-rnx" secondAttribute="bottom" constant="56.5" id="MFj-L4-1hp"/>
+                            <constraint firstItem="mDH-2T-B7L" firstAttribute="trailing" secondItem="W6b-kK-rnx" secondAttribute="trailing" id="NwF-mx-HKM"/>
                             <constraint firstItem="W6b-kK-rnx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tlf-1g-w7L"/>
                             <constraint firstItem="GKb-up-OBJ" firstAttribute="top" secondItem="yQ5-Ko-MSP" secondAttribute="bottom" constant="59" id="q6S-jI-Bw0"/>
                             <constraint firstItem="W6b-kK-rnx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sdq-Bs-Te0"/>
