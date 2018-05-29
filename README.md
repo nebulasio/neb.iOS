@@ -16,7 +16,11 @@
 
 # Usage
 
-See NASSmartContracts.h file.
+Import NASSmartContracts.h file.
+
+```obj-c
+#import <NASSmartContracts.h>
+```
 
 ### 1. Debug mode
 
