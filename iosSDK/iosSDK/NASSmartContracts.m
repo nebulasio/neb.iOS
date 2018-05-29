@@ -47,9 +47,11 @@ static NSString *kNASCheckUrl = NAS_CHECK_URL;
         [[UIApplication sharedApplication] openURL:url];
         return nil;
     }
-    return [NSError errorWithDomain:@"Need NasNano" code:-1 userInfo:@{
-                                                                       @"msg" : @"没安装Nebulas智能数字钱包，请下载安装"
-                                                                       }];
+    return [NSError errorWithDomain:@"Need NasNano"
+                               code:-1
+                           userInfo:@{
+                                      @"msg" : @"没安装Nebulas智能数字钱包，请下载安装"
+                                      }];
 }
 
 + (NSString *)queryValueWithSerialNumber:(NSString *)sn andInfo:(NSDictionary *)info {

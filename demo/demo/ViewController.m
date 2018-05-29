@@ -30,22 +30,28 @@
 
 - (IBAction)pay:(id)sender {
     self.sn = [NASSmartContracts randomCodeWithLength:32];
-    [NASSmartContracts payNas:@(0.0001)
-                    toAddress:@"n1a4MqSPPND7d1UoYk32jXqKb5m5s3AN6wB"
-             withSerialNumber:self.sn
-                 forGoodsName:@"test1"
-                      andDesc:@"desc"];
+    NSError *error = [NASSmartContracts payNas:@(0.0001)
+                                     toAddress:@"n1a4MqSPPND7d1UoYk32jXqKb5m5s3AN6wB"
+                              withSerialNumber:self.sn
+                                  forGoodsName:@"test1"
+                                       andDesc:@"desc"];
+    if (error) {
+        NSLog(@"%@", error.userInfo[@"msg"]);
+    }
 }
 
 - (IBAction)call:(id)sender {
     self.sn = [NASSmartContracts randomCodeWithLength:32];
-    [NASSmartContracts callWithMethod:@"save"
-                              andArgs:@[@"key111", @"value111"]
-                               payNas:@(0)
-                            toAddress:@"n1zVUmH3BBebksT4LD5gMiWgNU9q3AMj3se"
-                     withSerialNumber:self.sn
-                         forGoodsName:@"test2"
-                              andDesc:@"desc2"];
+    NSError *error = [NASSmartContracts callWithMethod:@"save"
+                                               andArgs:@[@"key111", @"value111"]
+                                                payNas:@(0)
+                                             toAddress:@"n1zVUmH3BBebksT4LD5gMiWgNU9q3AMj3se"
+                                      withSerialNumber:self.sn
+                                          forGoodsName:@"test2"
+                                               andDesc:@"desc2"];
+    if (error) {
+        NSLog(@"%@", error.userInfo[@"msg"]);
+    }
 }
 
 - (IBAction)check:(id)sender {
@@ -53,9 +59,9 @@
                              withCompletionHandler:^(NSDictionary *data) {
                                  NSData *json = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
                                  NSString *string = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-                                 NSLog(string);
+                                 NSLog(@"%@", string);
                              } errorHandler:^(NSInteger code, NSString *msg) {
-                                 NSLog(msg);
+                                 NSLog(@"%@", msg);
                              }];
 }
 
