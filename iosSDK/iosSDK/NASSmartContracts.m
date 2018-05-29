@@ -8,7 +8,28 @@
 #import <UIKit/UIKit.h>
 #import "NASSmartContracts.h"
 
+#define NAS_NANO_SCHEMA_URL @"openapp.nasnano://virtual?params=%@"
+
+#define NAS_CALLBACK_DEBUG @"https://pay.nebulas.io/api/pay"
+#define NAS_CHECK_URL_DEBUG @"https://pay.nebulas.io/api/pay/query?payId=%@"
+
+#define NAS_CALLBACK @"https://pay.nebulas.io/api/mainnet/pay"
+#define NAS_CHECK_URL @"https://pay.nebulas.io/api/mainnet/pay/query?payId=%@"
+
+static NSString *kNASCallback = NAS_CALLBACK;
+static NSString *kNASCheckUrl = NAS_CHECK_URL;
+
 @implementation NASSmartContracts
+
++ (void)debug:(BOOL)debug {
+    if (debug) {
+        kNASCallback = NAS_CALLBACK_DEBUG;
+        kNASCheckUrl = NAS_CHECK_URL_DEBUG;
+    } else {
+        kNASCallback = NAS_CALLBACK;
+        kNASCheckUrl = NAS_CHECK_URL;
+    }
+}
 
 + (NSString *)randomCodeWithLength:(NSInteger)length {
     static NSString *charSet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -23,7 +44,7 @@
 + (NSError *)openUrl:(NSString *)urlString {
     NSURL *url = [NSURL URLWithString:urlString];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+        [[UIApplication sharedApplication] openURL:url];
         return nil;
     }
     return [NSError errorWithDomain:@"Need NasNano" code:-1 userInfo:@{
@@ -68,7 +89,7 @@
                                            },
                                    @"currency" : @"NAS"
                                    },
-                           @"callback" : NAS_CALLBACK
+                           @"callback" : kNASCallback
                            };
     NSString *url = [NSString stringWithFormat:NAS_NANO_SCHEMA_URL,
                      [self queryValueWithSerialNumber:sn andInfo:info]];
@@ -99,20 +120,35 @@
                                            },
                                    @"currency" : @"NAS"
                                    },
-                           @"callback" : NAS_CALLBACK
+                           @"callback" : kNASCallback
                            };
     NSString *url = [NSString stringWithFormat:NAS_NANO_SCHEMA_URL,
                      [self queryValueWithSerialNumber:sn andInfo:info]];
     return [self openUrl:url];
 }
 
-+ (void)checkStatusWithSerialNumber:(NSString *)number withCompletionHandler:(void (^)(NSString *data))handler {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:NAS_CHECK_URL, number]];
++ (void)checkStatusWithSerialNumber:(NSString *)number
+              withCompletionHandler:(void (^)(NSDictionary *data))handler
+                       errorHandler:(void (^)(NSInteger code, NSString *msg))errorHandler {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:kNASCheckUrl, number]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (handler) {
-            handler([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        if (error) {
+            if (errorHandler) {
+                errorHandler(error.code, error.description);
+            }
+        } else {
+            NSDictionary *resDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            if (resDict[@"code"] && [resDict[@"code"] integerValue] == 0) {
+                if (handler) {
+                    handler(resDict[@"data"]);
+                }
+            } else {
+                if (errorHandler) {
+                    errorHandler([resDict[@"code"] integerValue], resDict[@"msg"]);
+                }
+            }
         }
     }];
     [sessionDataTask resume];

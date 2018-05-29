@@ -30,8 +30,8 @@
 
 - (IBAction)pay:(id)sender {
     self.sn = [NASSmartContracts randomCodeWithLength:32];
-    [NASSmartContracts payNas:@(0.01)
-                    toAddress:@"imaddress"
+    [NASSmartContracts payNas:@(0.0001)
+                    toAddress:@"n1a4MqSPPND7d1UoYk32jXqKb5m5s3AN6wB"
              withSerialNumber:self.sn
                  forGoodsName:@"test1"
                       andDesc:@"desc"];
@@ -39,19 +39,24 @@
 
 - (IBAction)call:(id)sender {
     self.sn = [NASSmartContracts randomCodeWithLength:32];
-    [NASSmartContracts callWithMethod:@"get"
-                              andArgs:@[@"a", @"b"]
+    [NASSmartContracts callWithMethod:@"save"
+                              andArgs:@[@"key111", @"value111"]
                                payNas:@(0)
-                            toAddress:@"imaddress"
+                            toAddress:@"n1zVUmH3BBebksT4LD5gMiWgNU9q3AMj3se"
                      withSerialNumber:self.sn
                          forGoodsName:@"test2"
                               andDesc:@"desc2"];
 }
 
 - (IBAction)check:(id)sender {
-    [NASSmartContracts checkStatusWithSerialNumber:self.sn withCompletionHandler:^(NSString *data) {
-        NSLog(@"%@", data);
-    }];
+    [NASSmartContracts checkStatusWithSerialNumber:self.sn
+                             withCompletionHandler:^(NSDictionary *data) {
+                                 NSData *json = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
+                                 NSString *string = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
+                                 NSLog(string);
+                             } errorHandler:^(NSInteger code, NSString *msg) {
+                                 NSLog(msg);
+                             }];
 }
 
 
