@@ -11,6 +11,7 @@
 @interface ViewController ()
 
 @property (nonatomic, strong) NSString *sn;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
@@ -35,8 +36,10 @@
                                   forGoodsName:@"test1"
                                        andDesc:@"desc"];
     if (error) {
-        NSLog(@"%@", error.userInfo[@"msg"]);
+        self.textView.text = error.userInfo[@"msg"];
         [NASSmartContracts goToNasNanoAppStore];
+    } else {
+        self.textView.text = @"Pay Successful!";
     }
 }
 
@@ -50,19 +53,22 @@
                                           forGoodsName:@"test2"
                                                andDesc:@"desc2"];
     if (error) {
-        NSLog(@"%@", error.userInfo[@"msg"]);
+        self.textView.text = error.userInfo[@"msg"];
         [NASSmartContracts goToNasNanoAppStore];
+    } else {
+        self.textView.text = @"Call Successful!";
     }
 }
 
 - (IBAction)check:(id)sender {
+    self.textView.text = @"querying...";
     [NASSmartContracts checkStatusWithSerialNumber:self.sn
                              withCompletionHandler:^(NSDictionary *data) {
                                  NSData *json = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
                                  NSString *string = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-                                 NSLog(@"%@", string);
+                                 self.textView.text = string;
                              } errorHandler:^(NSInteger code, NSString *msg) {
-                                 NSLog(@"%@", msg);
+                                 self.textView.text = msg;
                              }];
 }
 

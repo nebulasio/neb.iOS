@@ -53,10 +53,18 @@
                                     <action selector="goAppStore:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Joi-Te-0jf"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="epq-07-W8s">
+                                <rect key="frame" x="0.0" y="464" width="375" height="203"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="epq-07-W8s" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0jQ-P8-W0a"/>
                             <constraint firstItem="W6b-kK-rnx" firstAttribute="leading" secondItem="yQ5-Ko-MSP" secondAttribute="leading" id="2y9-me-cQn"/>
+                            <constraint firstAttribute="trailing" secondItem="epq-07-W8s" secondAttribute="trailing" id="Ai0-IF-Mjg"/>
                             <constraint firstItem="mDH-2T-B7L" firstAttribute="leading" secondItem="W6b-kK-rnx" secondAttribute="leading" id="Axh-UZ-amM"/>
                             <constraint firstItem="GKb-up-OBJ" firstAttribute="trailing" secondItem="yQ5-Ko-MSP" secondAttribute="trailing" id="BCW-EE-2Kx"/>
                             <constraint firstItem="W6b-kK-rnx" firstAttribute="top" secondItem="GKb-up-OBJ" secondAttribute="bottom" constant="63.5" id="C9j-9D-xTk"/>
@@ -64,14 +72,20 @@
                             <constraint firstItem="mDH-2T-B7L" firstAttribute="top" secondItem="W6b-kK-rnx" secondAttribute="bottom" constant="56.5" id="MFj-L4-1hp"/>
                             <constraint firstItem="mDH-2T-B7L" firstAttribute="trailing" secondItem="W6b-kK-rnx" secondAttribute="trailing" id="NwF-mx-HKM"/>
                             <constraint firstItem="W6b-kK-rnx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tlf-1g-w7L"/>
+                            <constraint firstItem="epq-07-W8s" firstAttribute="top" secondItem="mDH-2T-B7L" secondAttribute="bottom" constant="29" id="bsz-fc-gTF"/>
+                            <constraint firstItem="2ec-lv-MAN" firstAttribute="top" secondItem="epq-07-W8s" secondAttribute="bottom" id="cJK-Tq-0aS"/>
                             <constraint firstItem="GKb-up-OBJ" firstAttribute="top" secondItem="yQ5-Ko-MSP" secondAttribute="bottom" constant="59" id="q6S-jI-Bw0"/>
                             <constraint firstItem="W6b-kK-rnx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sdq-Bs-Te0"/>
                             <constraint firstItem="GKb-up-OBJ" firstAttribute="leading" secondItem="yQ5-Ko-MSP" secondAttribute="leading" id="swT-zB-6Zl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="epq-07-W8s" id="H53-s0-DeO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
