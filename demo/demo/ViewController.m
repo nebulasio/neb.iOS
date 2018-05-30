@@ -66,9 +66,13 @@
                              withCompletionHandler:^(NSDictionary *data) {
                                  NSData *json = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil];
                                  NSString *string = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-                                 self.textView.text = string;
+                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                     self.textView.text = string;
+                                 });
                              } errorHandler:^(NSInteger code, NSString *msg) {
-                                 self.textView.text = msg;
+                                 dispatch_async(dispatch_get_main_queue(), ^{
+                                     self.textView.text = msg;
+                                 });
                              }];
 }
 
