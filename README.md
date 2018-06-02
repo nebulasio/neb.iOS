@@ -16,6 +16,8 @@
 
 # Usage
 
+## Wallet
+
 Import NASSmartContracts.h file.
 
 ```obj-c
@@ -72,4 +74,43 @@ if (![NASSmartContracts nasNanoInstalled]) {
                              } errorHandler:^(NSInteger code, NSString *msg) {
                                  NSLog(@"%@", msg);
                              }];
+```
+
+## API
+
+Import NASApi.h file.
+
+```obj-c
+#import <NASApi.h>
+```
+
+### 1. Debug mode
+
+Debug mode will connect to the debug net.
+
+```obj-c
+[NASApi debug:YES]; // use the debug net
+```
+
+### 2. call API
+
+See the [API document](https://github.com/nebulasio/wiki/blob/e340e736c6756d54bca7a655e432db9f9a257544/rpc.md).
+
+We do not define model for response and return a dictionary instead. You can use your favorite json library to parse the data.
+
+```
+completionHandler:(void (^)(NSDictionary *data))handler
+errorHandler:(void (^)(NSString *msg))errorHandler
+```
+
+### 3. Contract
+
+You can form a contract by calling `contractWithSource:andSourceType:andFunction:andArgs`.
+
+```
+    [NASApi contractWithSource:nil
+                 andSourceType:nil
+                   andFunction:@"transferValue"
+                       andArgs:[@(500)]];
+
 ```
