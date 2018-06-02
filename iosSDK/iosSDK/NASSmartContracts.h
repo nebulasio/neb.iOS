@@ -7,12 +7,18 @@
 
 #import <Foundation/Foundation.h>
 
+// You need to add 'openapp.nasnano' to schema white list.
 @interface NASSmartContracts : NSObject
 
 /**
  * Go to debug mode. Default is product mode.
  **/
 + (void)debug:(BOOL)debug;
+
+/**
+ * Way to generate serialNumber.
+ **/
++ (NSString *)randomCodeWithLength:(NSInteger)length;
 
 /**
  * Check if NasNano is installed.
@@ -23,11 +29,6 @@
  * Go to appstore for NasNano.
  **/
 + (void)goToNasNanoAppStore;
-
-/**
- * Way to generate serialNumber.
- **/
-+ (NSString *)randomCodeWithLength:(NSInteger)length;
 
 /**
  * Pay for goods. Return nil if successful.

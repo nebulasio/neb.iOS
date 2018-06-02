@@ -12,9 +12,11 @@
 
 #define NAS_CALLBACK_DEBUG @"https://pay.nebulas.io/api/pay"
 #define NAS_CHECK_URL_DEBUG @"https://pay.nebulas.io/api/pay/query?payId=%@"
+#define NAS_HOST_DEBUG @"https://testnet.nebulas.io%@"
 
 #define NAS_CALLBACK @"https://pay.nebulas.io/api/mainnet/pay"
 #define NAS_CHECK_URL @"https://pay.nebulas.io/api/mainnet/pay/query?payId=%@"
+#define NAS_HOST @"https://mainnet.nebulas.io%@"
 
 static NSString *kNASCallback = NAS_CALLBACK;
 static NSString *kNASCheckUrl = NAS_CHECK_URL;

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C54D3D4D20BC49790033C2B3 /* NASSmartContracts.m in Sources */ = {isa = PBXBuildFile; fileRef = C54D3D4C20BC49790033C2B3 /* NASSmartContracts.m */; };
 		C54D3D8B20BDA0FF0033C2B3 /* NASSmartContracts.h in Headers */ = {isa = PBXBuildFile; fileRef = C54D3D8A20BDA0FF0033C2B3 /* NASSmartContracts.h */; };
+		C54D3D9320C283F10033C2B3 /* NASApi.h in Headers */ = {isa = PBXBuildFile; fileRef = C54D3D9120C283F10033C2B3 /* NASApi.h */; };
+		C54D3D9420C283F10033C2B3 /* NASApi.m in Sources */ = {isa = PBXBuildFile; fileRef = C54D3D9220C283F10033C2B3 /* NASApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +29,8 @@
 		C54D3D0E20BC47B90033C2B3 /* libiosSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiosSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54D3D4C20BC49790033C2B3 /* NASSmartContracts.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NASSmartContracts.m; sourceTree = "<group>"; };
 		C54D3D8A20BDA0FF0033C2B3 /* NASSmartContracts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASSmartContracts.h; sourceTree = "<group>"; };
+		C54D3D9120C283F10033C2B3 /* NASApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NASApi.h; sourceTree = "<group>"; };
+		C54D3D9220C283F10033C2B3 /* NASApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NASApi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 			children = (
 				C54D3D8A20BDA0FF0033C2B3 /* NASSmartContracts.h */,
 				C54D3D4C20BC49790033C2B3 /* NASSmartContracts.m */,
+				C54D3D9120C283F10033C2B3 /* NASApi.h */,
+				C54D3D9220C283F10033C2B3 /* NASApi.m */,
 			);
 			path = iosSDK;
 			sourceTree = "<group>";
@@ -72,6 +78,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C54D3D9320C283F10033C2B3 /* NASApi.h in Headers */,
 				C54D3D8B20BDA0FF0033C2B3 /* NASSmartContracts.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C54D3D4D20BC49790033C2B3 /* NASSmartContracts.m in Sources */,
+				C54D3D9420C283F10033C2B3 /* NASApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
