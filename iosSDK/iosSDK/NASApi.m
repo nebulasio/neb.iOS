@@ -113,10 +113,10 @@ static NSString *kNASHost = NAS_HOST;
     NSDictionary *dict = @{
                            @"from" : fromAddr ?: @"",
                            @"to" : toAddr ?: @"",
-                           @"value" : [self weiFromNas:nas],
+                           @"value" : [NSString stringWithFormat:@"%.0f", [[self weiFromNas:nas] doubleValue]],
                            @"nonce" : @(nonce),
-                           @"gasPrice" : [self weiFromNas:gasNas],
-                           @"gasLimit" : [self weiFromNas:gasNasLimit],
+                           @"gasPrice" : [NSString stringWithFormat:@"%.0f", [[self weiFromNas:gasNas] doubleValue]],
+                           @"gasLimit" : [NSString stringWithFormat:@"%.0f", [[self weiFromNas:gasNasLimit] doubleValue]],
                            @"contract" : contract ?: @{}
                            };
     [self executeNetworkRequest:[self postRequestWithUrl:url andData:dict]
@@ -214,10 +214,10 @@ static NSString *kNASHost = NAS_HOST;
     NSDictionary *dict = @{
                            @"from" : fromAddr ?: @"",
                            @"to" : toAddr ?: @"",
-                           @"value" : [self weiFromNas:nas],
+                           @"value" : [NSString stringWithFormat:@"%.0f", [[self weiFromNas:nas] doubleValue]],
                            @"nonce" : @(nonce),
-                           @"gas_price" : [self weiFromNas:gasNas],
-                           @"gas_limit" : [self weiFromNas:gasNasLimit],
+                           @"gas_price" : [NSString stringWithFormat:@"%.0f", [[self weiFromNas:gasNas] doubleValue]],
+                           @"gas_limit" : [NSString stringWithFormat:@"%.0f", [[self weiFromNas:gasNasLimit] doubleValue]],
                            @"contract" : contract ?: @{},
                            @"binary" : binaryString ?: @""
                            };
